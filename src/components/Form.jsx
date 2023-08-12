@@ -2,10 +2,12 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addPost } from '../store/features/posts/postsSlice';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import './Form.css';
 
 const Form = () => {
 
+  const apiUrl = process.env.REACT_APP_API_URL;
   const dispatch = useDispatch();
   const { register, formState: {errors}, handleSubmit } = useForm();
   let postsIds = useSelector(state => state.posts).map(post => post.id);
@@ -15,15 +17,15 @@ const Form = () => {
     return maxId + 1;
   }
 
-  const onSubmit = (data, e) => {
+  const onSubmit = async (data, e) => {
     try {
       const post = {
-        id: generateId(),
         name: data.name,
         description: data.description
       }
-      console.log(post);
-      dispatch(addPost(post));
+      const response = await axios.post(apiUrl + '/posts', post);
+      console.log(response.data);
+      dispatch(addPost(response.data));
       e.target.reset();
     } catch (e) {
       console.error(e);
