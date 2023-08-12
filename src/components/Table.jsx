@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './Table.css';
 
 const Table = () => {
 
@@ -8,8 +7,8 @@ const Table = () => {
 
   return (
     <>
-      <table className="table is-narrow is-bordered is-fullwidth" summary="Posts">
-        <thead>
+      <table className="table is-narrow is-striped is-bordered is-fullwidth" summary="Posts">
+        <thead className="has-background-light">
           <tr>
             <th scope="col">Nombre</th>
             <th scope="col">Descripción</th>
