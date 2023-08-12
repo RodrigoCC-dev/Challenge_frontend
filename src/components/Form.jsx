@@ -28,7 +28,7 @@ const Form = () => {
       dispatch(addPost(response.data));
       e.target.reset();
     } catch (e) {
-      console.error(e);
+      console.error(e.response.data.error);
     }
   }
 
