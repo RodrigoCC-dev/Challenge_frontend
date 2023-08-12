@@ -17,3 +17,8 @@
 .table.is-fullwidth {
   width: 100%;
 }
+
+.table.is-bordered td,
+.table.is-bordered th {
+  border-width: 1px;
+}

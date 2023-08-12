@@ -1,7 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './Table.css';
 
 const Table = () => {
+
+  let posts = useSelector(state => state.posts);
+
   return (
     <>
       <table className="table is-narrow is-bordered is-fullwidth" summary="Posts">
@@ -13,9 +17,19 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-
+          {
+            posts.map(post =>
+              <tr key={post.id}>
+                <td>{post.name}</td>
+                <td>{post.description}</td>
+                <td>Eliminar</td>
+              </tr>
+            )
+          }
         </tbody>
       </table>
     </>
   )
 };
+
+export default Table;
