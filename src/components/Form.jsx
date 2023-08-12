@@ -1,14 +1,33 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addPost } from '../store/features/posts/postsSlice';
 import { useForm } from 'react-hook-form';
 import './Form.css';
 
 const Form = () => {
 
-  const { register, formState: {errors}, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch();
+  const { register, formState: {errors}, handleSubmit } = useForm();
+  let postsIds = useSelector(state => state.posts).map(post => post.id);
+
+  const generateId = () => {
+    const maxId = postsIds.sort((a, b) => b - a)[0];
+    return maxId + 1;
+  }
 
   const onSubmit = (data, e) => {
-    console.log(data);
-    e.target.reset();
+    try {
+      const post = {
+        id: generateId(),
+        name: data.name,
+        description: data.description
+      }
+      console.log(post);
+      dispatch(addPost(post));
+      e.target.reset();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   return (
