@@ -43,19 +43,20 @@
     max-width: 90%;
     padding-bottom: 10px !important;
     left: 20px;
+    padding: 5px 0;
   }
 
   .input-desc {
     width: 400px;
     max-width: 90%;
     left: 20px;
+    padding: 5px 0;
   }
 
   .for-media {
     display: flex;
     position: relative;
     left: 20px;
-    padding-bottom: 5px;
     margin: 5px;
   }
 }
