@@ -1,0 +1,6 @@
+.not-over {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -25%);
+  z-index: 10;
+}

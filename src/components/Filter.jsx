@@ -13,11 +13,22 @@ const Filter = () => {
   const [ nameList, setNameList ] = useState(namePost);
 
   useEffect(() => {
-    setNameList(posts.map(post => post.name));
+    const list = deleteDuplicates(posts.map(post => post.name))
+    setNameList(list);
     return () => {
       setNameList([]);
     }
   }, [posts]);
+
+  const deleteDuplicates = (array) => {
+    let list = [];
+    array.forEach(item => {
+      if (!list.includes(item)) {
+        list.push(item);
+      }
+    });
+    return list;
+  }
 
   const handleInputChange = (e) => {
     console.log(e.target.value);
@@ -45,7 +56,7 @@ const Filter = () => {
 
   return (
     <>
-      <div className="field is-flex is-justify-content-space-between">
+      <div className="field is-flex flex-media">
         <div className="dropdown-new">
           <div className="control">
             <input className="input inp-filter" placeholder="Filtro de Nombre" onChange={handleInputChange}/>

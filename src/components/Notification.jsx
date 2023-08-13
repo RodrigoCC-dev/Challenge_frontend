@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeNotication } from '../store/features/notification/notificationSlice';
+import './Notification.css';
 
 const Notification = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Notification = () => {
 
   return (
     <>
-      <div className="is-flex is-justify-content-center">
+      <div className="is-flex is-justify-content-center not-over">
         <div className={notificationClass()}>
           <button className="delete" onClick={closeNot}></button>
           { notification.msg }
