@@ -1,3 +1,8 @@
+.flex-media {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .dropdown-new {
   display: inline-block;
   position: relative;
@@ -9,4 +14,13 @@
 
 .inp-filter {
   width: 350px;
+}
+
+@media screen and (max-width: 600px) {
+  .flex-media {
+    height: 150px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
