@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Challenge_Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Entorno de desarrollo
+* NodeJS v18.16
+* npm v9.8.1
+* React v18.2.0
+* React-Redux v8.1.2
+* ReduxJS Toolkit v1.9.5
 
-## Available Scripts
+## Instalación
+La siguiente descripción de instalación se realiza considerando un sistema local con Ubuntu 20.04. Para otras distribuciones de sistemas operativos pueden haber variaciones en los comandos indicados.
+### nvm-sh
+*nvm-sh* es una herramienta que facilita la instalación de múltiples versiones de NodeJS en el sistema, por lo cual permite elegir la versión específica a utilizar. Para su instalación se debe contar con cURL instalado:
+```
+sudo apt update
+sudo apt install curl
+```
+Instalar *nvm-sh* a través del script de instalación proporcionado en la [documentación oficial](https://github.com/nvm-sh/nvm):
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+```
+Ejecutar el siguiente comando para que la consola del sistema reconozca las instrucciones de *nvm-sh* en las siguientes sesiones de trabajo:
+```
+source ~/.bashrc
+```
+Cerrar la sesión actual y volver a abrir la consola para continuar con la instalación.
 
-In the project directory, you can run:
+### Node.js
+Con la ayuda de *nvm-sh* ya es posible instalar la versión de *NodeJS* requerida a través del siguiente comando:
+```
+nvm install 18.16
+```
+Verificar la versión de *NodeJS* instalada:
+```
+node --version
+```
+Verificar la versión de npm instalada:
+```
+npm --version
+```
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Desplegar en entorno de desarrollo
+### Clonar repositorio e instalar dependencias
+Clonar el repositorio e ingresar al directorio de la aplicación:
+```
+git clone https://github.com/RodrigoCC-dev/Challenge_frontend.git challenge-frontend
+cd challenge-frontend
+```
+Instalar las dependencias:
+```
+npm install
+```
+Generar archivo de variables de entorno de la aplicación copiando archivo .env_example a .env y editarlo:
+```
+cp .env_example .env
+nano .env
+```
+Cambiar valores de variables de entorno:
+```
+REACT_APP_API_URL='Dirección_de_la_aplicación_Backend'  # Ej.: 'http://localhost:8080'
+```
+Desplegar la aplicación en entorno de desarrollo:
+```
+npm start
+```
