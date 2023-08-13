@@ -54,11 +54,8 @@ const Filter = () => {
           </div>
         </div>
         { filter.value.length > 0 &&
-          <div className="block">
-            <span className="tag is-link is-light">
-              { filter.value }
-              <button className="delete is-small" onClick={eraseFilter}></button>
-            </span>
+          <div className="control">
+            <button className="button is-rounded is-link is-small is-outlined" onClick={eraseFilter}>Quitar filtro { filter.value }</button>
           </div>
         }
         <div className="control">
