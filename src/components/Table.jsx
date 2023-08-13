@@ -18,7 +18,7 @@ const Table = () => {
     return () => {
       setPostList([]);
     };
-  }, [filter])
+  }, [posts, filter])
 
   const autoCloseNotification = () => {
     setTimeout(() => {

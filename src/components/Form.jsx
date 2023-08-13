@@ -27,7 +27,6 @@ const Form = () => {
         description: data.description
       }
       const response = await axios.post(apiUrl + '/posts', post);
-      console.log(response.data);
       dispatch(addPost(response.data));
       dispatch(setSuccess());
       dispatch(showNotification('Se ha agregado el nuevo post exitósamente'));

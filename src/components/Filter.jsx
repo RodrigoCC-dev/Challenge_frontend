@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from '../store/features/filter/filterSlice';
 import './Filter.css';
@@ -11,6 +11,13 @@ const Filter = () => {
   const namePost = posts.map(post => post.name);
   const [ data, setData ] = useState('');
   const [ nameList, setNameList ] = useState(namePost);
+
+  useEffect(() => {
+    setNameList(posts.map(post => post.name));
+    return () => {
+      setNameList([]);
+    }
+  }, [posts]);
 
   const handleInputChange = (e) => {
     console.log(e.target.value);
