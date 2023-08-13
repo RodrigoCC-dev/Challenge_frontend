@@ -31,7 +31,6 @@ const Filter = () => {
   }
 
   const handleInputChange = (e) => {
-    console.log(e.target.value);
     setData(e.target.value);
     setNameList(namePost.filter(name => name.includes(data)))
   }
