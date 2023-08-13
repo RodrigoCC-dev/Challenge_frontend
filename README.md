@@ -15,7 +15,7 @@ La siguiente descripción de instalación se realiza considerando un sistema loc
 sudo apt update
 sudo apt install curl
 ```
-Instalar *nvm-sh* a través del script de instalación proporcionado en la documentación oficial:
+Instalar *nvm-sh* a través del script de instalación proporcionado en la [documentación oficial](https://github.com/nvm-sh/nvm):
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
@@ -25,7 +25,7 @@ source ~/.bashrc
 ```
 Cerrar la sesión actual y volver a abrir la consola para continuar con la instalación.
 
-## Node.js
+### Node.js
 Con la ayuda de *nvm-sh* ya es posible instalar la versión de *NodeJS* requerida a través del siguiente comando:
 ```
 nvm install 18.16
