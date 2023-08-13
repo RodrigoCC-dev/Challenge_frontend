@@ -1,0 +1,12 @@
+.dropdown-new {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-new:hover .dropdown-menu {
+  display: block;
+}
+
+.inp-filter {
+  width: 350px;
+}
