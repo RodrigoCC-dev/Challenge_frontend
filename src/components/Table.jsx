@@ -10,7 +10,7 @@ const Table = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
   const posts = useSelector(state => state.posts);
   const filter = useSelector(state => state.filter.value);
-  const [ postList, setPostList ] = useState(posts.filter(post => post.name.includes(filter)));
+  const [ postList, setPostList ] = useState(posts);
   const dispatch = useDispatch();
 
   useEffect(() => {

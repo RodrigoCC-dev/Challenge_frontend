@@ -10,7 +10,7 @@ const Filter = () => {
 
   const namePost = posts.map(post => post.name);
   const [ data, setData ] = useState('');
-  const [ nameList, setNameList ] = useState(namePost.filter(name => name.includes(filter.value)));
+  const [ nameList, setNameList ] = useState(namePost);
 
   const handleInputChange = (e) => {
     console.log(e.target.value);

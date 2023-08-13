@@ -3,10 +3,32 @@ import Table from './components/Table';
 import Form from './components/Form';
 import Filter from './components/Filter';
 import Notification from './components/Notification';
-import { useSelector } from 'react-redux';
+
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setList } from './store/features/posts/postsSlice';
+import axios from 'axios';
 
 function App() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const notification = useSelector(state => state.notification);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getPosts();
+    return () => {
+      dispatch(setList([]));
+    };
+  }, []);
+
+  const getPosts = async () => {
+    try {
+      const response = await axios.get(apiUrl + '/posts');
+      dispatch(setList(response.data));
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   return (
     <div className="App container mt-5">
