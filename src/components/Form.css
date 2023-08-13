@@ -1,7 +1,59 @@
+.flex-media {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .input-name {
   width: 250px;
 }
 
 .input-desc {
   width: 500px;
+}
+
+.for-media {
+
+}
+
+@media screen and (max-width: 900px) {
+  .input-name {
+    width: 180px;
+    max-width: 90%;
+  }
+
+  .input-desc {
+    width: 270px;
+    max-width: 90%;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .flex-media {
+    height: 200px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px 0;
+  }
+
+  .input-name {
+    width: 400px;
+    max-width: 90%;
+    padding-bottom: 10px !important;
+    left: 20px;
+  }
+
+  .input-desc {
+    width: 400px;
+    max-width: 90%;
+    left: 20px;
+  }
+
+  .for-media {
+    position: absolute;
+    left: 20px;
+    padding-bottom: 5px;
+  }
 }
