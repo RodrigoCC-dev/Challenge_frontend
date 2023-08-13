@@ -28,9 +28,7 @@ const Filter = () => {
   const changeFilter = (e) => {
     let inputElement = e.target.parentElement.parentElement.firstChild.firstChild.firstChild;
     inputElement.value = ''
-    //console.log(e.target.parentElement.parentElement.firstChild.firstChild.firstChild)
     dispatch(setFilter(data));
-    //setData('');
   }
 
   const eraseFilter = () => {

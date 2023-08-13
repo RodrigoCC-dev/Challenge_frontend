@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deletePost } from '../store/features/posts/postsSlice';
 import { showNotification, closeNotication } from '../store/features/notification/notificationSlice';
@@ -8,8 +8,17 @@ import axios from 'axios'
 const Table = () => {
 
   const apiUrl = process.env.REACT_APP_API_URL;
-  let posts = useSelector(state => state.posts);
+  const posts = useSelector(state => state.posts);
+  const filter = useSelector(state => state.filter.value);
+  const [ postList, setPostList ] = useState(posts.filter(post => post.name.includes(filter)));
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setPostList(posts.filter(post => post.name.includes(filter)));
+    return () => {
+      setPostList([]);
+    };
+  }, [filter])
 
   const autoCloseNotification = () => {
     setTimeout(() => {
@@ -47,7 +56,7 @@ const Table = () => {
         </thead>
         <tbody>
           {
-            posts.map(post =>
+            postList.map(post =>
               <tr id={post.id} key={post.id}>
                 <td>{post.name}</td>
                 <td>{post.description}</td>
