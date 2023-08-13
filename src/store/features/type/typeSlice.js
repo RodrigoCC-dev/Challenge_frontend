@@ -37,6 +37,6 @@ export const typeSlice = createSlice({
   }
 });
 
-export const { setSuccess, setWarn, setError } = typeSlice.actions;
+export const { setSuccess, setWarn, setError, clearType } = typeSlice.actions;
 
 export default typeSlice.reducer;

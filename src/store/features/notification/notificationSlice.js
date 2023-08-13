@@ -14,13 +14,16 @@ export const notificationSlice = createSlice({
         msg: action.payload
       }
     },
-    autoCloseNotification: (state, action) => {
-      const newState = {...state, display: false, msg: ''}
-      return setTimeout(() => newState, 5000);
+    closeNotication: (state, action) => {
+      return {
+        ...state,
+        display: false,
+        msg: ''
+      }
     }
   }
 });
 
-export const { showNotification, autoCloseNotification } = notificationSlice.actions;
+export const { showNotification, closeNotication } = notificationSlice.actions;
 
 export default notificationSlice.reducer;

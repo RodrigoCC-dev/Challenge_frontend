@@ -1,6 +1,8 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addPost } from '../store/features/posts/postsSlice';
+import { showNotification, closeNotication } from '../store/features/notification/notificationSlice';
+import { setSuccess, setError, clearType } from '../store/features/type/typeSlice';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import './Form.css';
@@ -10,11 +12,12 @@ const Form = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
   const dispatch = useDispatch();
   const { register, formState: {errors}, handleSubmit } = useForm();
-  let postsIds = useSelector(state => state.posts).map(post => post.id);
 
-  const generateId = () => {
-    const maxId = postsIds.sort((a, b) => b - a)[0];
-    return maxId + 1;
+  const autoCloseNotification = () => {
+    setTimeout(() => {
+      dispatch(clearType());
+      dispatch(closeNotication());
+    }, 5000)
   }
 
   const onSubmit = async (data, e) => {
@@ -26,8 +29,14 @@ const Form = () => {
       const response = await axios.post(apiUrl + '/posts', post);
       console.log(response.data);
       dispatch(addPost(response.data));
+      dispatch(setSuccess());
+      dispatch(showNotification('Se ha agregado el nuevo post exitósamente'));
+      autoCloseNotification();
       e.target.reset();
     } catch (e) {
+      dispatch(setError());
+      dispatch(showNotification(e.response.data.error));
+      autoCloseNotification();
       console.error(e.response.data.error);
     }
   }
