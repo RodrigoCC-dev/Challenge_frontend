@@ -13,11 +13,22 @@ const Filter = () => {
   const [ nameList, setNameList ] = useState(namePost);
 
   useEffect(() => {
-    setNameList(posts.map(post => post.name));
+    const list = deleteDuplicates(posts.map(post => post.name))
+    setNameList(list);
     return () => {
       setNameList([]);
     }
   }, [posts]);
+
+  const deleteDuplicates = (array) => {
+    let list = [];
+    array.forEach(item => {
+      if (!list.includes(item)) {
+        list.push(item);
+      }
+    });
+    return list;
+  }
 
   const handleInputChange = (e) => {
     console.log(e.target.value);
